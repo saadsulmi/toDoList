@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <div class="container" >
+        <h1>To Do List</h1>
+        <div class="sub-form">
+            <form action="/" method="post" id="myForm">
+                <input placeholder="enter your list" type="text" name="todo" >
+                <button type="submit">add to list</button>
+            </form>
+        </div>
+        <% if(data){ %>
+                  <ul>
+                    <% for(i=0;i<data.length;i++){ %>
+                        <li><h2><%= data[i].todolist %></h2> <a href="/deletelist?id=<%=data[i]._id%>">done</a></li>
+                    <% } %>
+                  </ul>
+        <% } %>
+    </div>
+
+
+</body>
+</html>

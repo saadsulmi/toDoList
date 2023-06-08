@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 
 const toDoSchema = new mongoose.Schema({
-    todo:{
+    todolist:{
         type: String,
-        required :true,
+        required : true,
     },
 })
 

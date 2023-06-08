@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const userRoute = require('./routes/route');
 const app=express();
 
 
@@ -10,20 +10,23 @@ mongoose.connect('mongodb://127.0.0.1:27017/toDoList',{
     useNewUrlParser:true,
     useUnifiedTopology: true,
 });
-
+mongoose.connection.once('open',()=>{
+    console.log('database connected succefully');
+})
 
 //middlewares
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.static("public"))
-app.use('view engine','ejs');
+
+app.set('view engine','ejs');
 
 //routes
 
-app.use(require('./routes/route'));
+app.use('/', userRoute)
 
 //server config
 
 app.listen(3000,()=>{
-    console.log('server started successfully');
+    console.log('server started successfully 3000');
 })
